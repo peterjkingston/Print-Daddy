@@ -11,6 +11,7 @@ namespace PrintDaddyService
     {
         static void Main(string[] args)
         {
+            //Using the Topshelf method.
             var exitCode = HostFactory.Run(x =>
             {
                 x.Service<PrintDaddy>(s =>
