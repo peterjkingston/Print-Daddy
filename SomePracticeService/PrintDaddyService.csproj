@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7DFDAC01-AE94-4EE7-BDA3-C7748F1317F7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SomePracticeService</RootNamespace>
-    <AssemblyName>SomePracticeService</AssemblyName>
+    <RootNamespace>PrintDaddyService</RootNamespace>
+    <AssemblyName>PrintDaddyService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,9 +48,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataKey.cs" />
     <Compile Include="IDataRetriever.cs" />
     <Compile Include="IPrintManager.cs" />
     <Compile Include="IRecordReader.cs" />
+    <Compile Include="LocalPlainTextProvider.cs" />
+    <Compile Include="LocalXmlProvider.cs" />
     <Compile Include="PrintDaddy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

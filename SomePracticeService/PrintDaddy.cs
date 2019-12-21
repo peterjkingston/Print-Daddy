@@ -11,12 +11,16 @@ namespace PrintDaddyService
     public class PrintDaddy
     {
         readonly Timer _timer;
-        List<string> _localKeys;
-        List<string> _remoteKeys;
-        IDataRetriever _remoteDataRetriever;
+        List<DataKey> _localKeys;
+        List<DataKey> _remoteKeys;
+        IDataProvider _remoteDataProvider;
+        IDataProvider _localDataProvider;
         IPrintManager _printManager;
         IRecordReader _recordReader;
 
+        /// <summary>
+        /// Default constructor. Designated for use with Topshelf.HostFactory.
+        /// </summary>
         public PrintDaddy()
         {
             //Run the service every minute.
@@ -35,18 +39,21 @@ namespace PrintDaddyService
                 _localKeys = ReadRemoteKeysSync();
             }
 
-            _remoteDataRetriever = null; //TODO;
+            _localDataProvider = null; //TODO;
+            _remoteDataProvider = null; //TODO;
+            _printManager = null; //TODO;
+            _recordReader = null; //TODO;
         }
 
-        private List<string> ReadLocalKeys()
+        private List<DataKey> ReadLocalKeys()
         {
-            string udt = File.ReadAllText(ResourceManager.LocalKeyPath);
-            return new List<string>(udt.Split(ResourceManager.LocalKeyDelimiter));
+            return _localDataProvider.GetKeys();
         }
 
         private bool LocalKeysExist()
         {
-            return File.Exists(ResourceManager.LocalKeyPath);
+            //return File.Exists(ResourceManager.LocalKeyPath);
+            return _localDataProvider.KeysExist();
         }
 
         private void Time_Elapsed(object sender, ElapsedEventArgs e)
@@ -54,7 +61,7 @@ namespace PrintDaddyService
             _remoteKeys = ReadRemoteKeysSync();
             if (_remoteKeys != null && this.NeedsToRun())
             {
-                foreach (string key in _remoteKeys)
+                foreach (DataKey key in _remoteKeys)
                 {
                     if (!_localKeys.Contains(key))
                     {
@@ -65,15 +72,15 @@ namespace PrintDaddyService
             }
         }
 
-        private List<string> ReadRemoteKeysSync()
+        private List<DataKey> ReadRemoteKeysSync()
         {
-            return _remoteDataRetriever.GetKeys();
+            return _remoteDataProvider.GetKeys();
         }
 
         private bool NeedsToRun()
         {
             bool result = false;
-            foreach (string key in _remoteKeys)
+            foreach (DataKey key in _remoteKeys)
             {
                 if (!_localKeys.Contains(key))
                 {
@@ -84,11 +91,17 @@ namespace PrintDaddyService
             return result;
         }
 
+        /// <summary>
+        /// Designated start method for use with Topshelf.HostFactory. Starts the service.
+        /// </summary>
         public void Start()
         {
             _timer.Start();
         }
 
+        /// <summary>
+        /// Designated stop method for use with Topshelf.HostFactory. Stops the service.
+        /// </summary>
         public void Stop()
         {
             _timer.Stop();

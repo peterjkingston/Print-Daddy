@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomePracticeService", "SomePracticeService\SomePracticeService.csproj", "{7DFDAC01-AE94-4EE7-BDA3-C7748F1317F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintDaddyService", "SomePracticeService\PrintDaddyService.csproj", "{7DFDAC01-AE94-4EE7-BDA3-C7748F1317F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
