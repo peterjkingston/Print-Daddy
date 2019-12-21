@@ -13,6 +13,7 @@ namespace PrintDaddyService
         readonly Timer _timer;
         List<DataKey> _localKeys;
         List<DataKey> _remoteKeys;
+        ICredintialsProvider _credentialsProvider;
         IDataProvider _remoteDataProvider;
         IDataProvider _localDataProvider;
         IPrintManager _printManager;
@@ -39,10 +40,11 @@ namespace PrintDaddyService
                 _localKeys = ReadRemoteKeysSync();
             }
 
-            _localDataProvider = null; //TODO;
-            _remoteDataProvider = null; //TODO;
-            _printManager = null; //TODO;
-            _recordReader = null; //TODO;
+            _localDataProvider = new LocalXmlProvider();
+            _credentialsProvider = new CryptoCredentialProvider(); 
+            _remoteDataProvider = new RemoteAPIProvider(_credentialsProvider);
+            _printManager = new DefaultPrintManager();
+            _recordReader = (IRecordReader)_remoteDataProvider; 
         }
 
         private List<DataKey> ReadLocalKeys()
