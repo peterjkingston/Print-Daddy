@@ -1,25 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 
 namespace PrintDaddyService
 {
-    class LocalXmlProvider: IDataProvider
+    class LocalBinaryProvider : IDataProvider
     {
         List<DataKey> _keys;
 
-        /// <summary>
-        /// Gets DataKeys from the local XML file.
-        /// </summary>
-        /// <returns>List object of DataKey</returns>
-        /// <exceptions>FileNotFoundException</exceptions>"
         public List<DataKey> GetKeys()
         {
-            if(_keys == null)
+            if(_keys != null)
             {
-                _keys = LoadKeys();
+                return _keys;
             }
-            return _keys;
+            else
+            {
+                return LoadKeys();
+            }
         }
 
         private List<DataKey> LoadKeys()
@@ -29,9 +29,9 @@ namespace PrintDaddyService
             {
                 using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, FileMode.Open))
                 {
-                    XmlSerializer xs = new XmlSerializer(typeof(DataKey[]));
-                    DataKey[] keys = (DataKey[])xs.Deserialize(keyStream);
-
+                    BinaryFormatter bf = new BinaryFormatter();
+                    DataKey[] keys = (DataKey[])bf.Deserialize(keyStream);
+                    
                     keysList = new List<DataKey>(keys);
 
                     keyStream.Close();
@@ -40,10 +40,6 @@ namespace PrintDaddyService
             return keysList;
         }
 
-        /// <summary>
-        /// Determines if there are valid DataKeys in the local XML file.
-        /// </summary>
-        /// <returns>Returns true if DataKeys exist in the local XML file.</returns>
         public bool KeysExist()
         {
             _keys = LoadKeys();

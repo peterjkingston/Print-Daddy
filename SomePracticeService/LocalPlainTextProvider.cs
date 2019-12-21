@@ -6,12 +6,23 @@ namespace PrintDaddyService
 {
     class LocalPlainTextProvider : IDataProvider
     {
+        List<DataKey> _keys;
+
         /// <summary>
-        /// Gets keys that have already been loaded form the local file.
+        /// Gets keys that have already been loaded form the local plain text file.
         /// </summary>
         /// <returns>List of keys as strings</returns>
         /// <exceptions>DataMisalignedException, FileNotFoundException</exceptions>
         public List<DataKey> GetKeys()
+        {
+            if(_keys == null)
+            {
+                _keys = LoadKeys();
+            }
+            return _keys;
+        }
+
+        private List<DataKey> LoadKeys()
         {
             if (File.Exists(ResourceManager.LocalKeyPath))
             {
@@ -20,7 +31,7 @@ namespace PrintDaddyService
                 if (udts[0].Contains(ResourceManager.LocalKeyDelimiter.ToString()))
                 {
                     List<DataKey> keys = new List<DataKey>();
-                    foreach(string udt in udts)
+                    foreach (string udt in udts)
                     {
                         string[] parts = udt.Split(ResourceManager.LocalKeyDelimiter);
                         string keyID = parts[0];
@@ -28,8 +39,8 @@ namespace PrintDaddyService
                         DateTime.TryParse(parts[1], out keyTimeStamp);
                         keys.Add(new DataKey(keyID, keyTimeStamp));
                     }
-                    
-                    return keys; 
+
+                    return keys;
                 }
                 else
                 {
@@ -48,8 +59,9 @@ namespace PrintDaddyService
         /// <returns>Returns true if valid data exist.</returns>
         public bool KeysExist()
         {
-            return (File.Exists(ResourceManager.LocalKeyPath) && 
-                File.ReadAllText(ResourceManager.LocalKeyPath).Contains(ResourceManager.LocalKeyDelimiter.ToString()));
+            _keys = LoadKeys();
+            bool result = _keys.Count > 0 ? true : false;
+            return result;
         }
     }
 }

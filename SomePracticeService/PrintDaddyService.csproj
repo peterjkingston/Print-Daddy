@@ -49,9 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataKey.cs" />
-    <Compile Include="IDataRetriever.cs" />
+    <Compile Include="IDataProvider.cs" />
     <Compile Include="IPrintManager.cs" />
     <Compile Include="IRecordReader.cs" />
+    <Compile Include="LocalBinaryProvider.cs" />
     <Compile Include="LocalPlainTextProvider.cs" />
     <Compile Include="LocalXmlProvider.cs" />
     <Compile Include="PrintDaddy.cs" />
