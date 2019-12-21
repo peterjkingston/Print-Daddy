@@ -15,11 +15,21 @@ namespace PrintDaddyService
         {
             if (File.Exists(ResourceManager.LocalKeyPath))
             {
-                string udt = File.ReadAllText(ResourceManager.LocalKeyPath);
-                if (udt.Contains(ResourceManager.LocalKeyDelimiter.ToString()))
+                string[] udts = File.ReadAllLines(ResourceManager.LocalKeyPath);
+
+                if (udts[0].Contains(ResourceManager.LocalKeyDelimiter.ToString()))
                 {
-                    udt.Split(ResourceManager.LocalKeyDelimiter);
-                    return new List<DataKey>(); //TODO
+                    List<DataKey> keys = new List<DataKey>();
+                    foreach(string udt in udts)
+                    {
+                        string[] parts = udt.Split(ResourceManager.LocalKeyDelimiter);
+                        string keyID = parts[0];
+                        DateTime keyTimeStamp = default;
+                        DateTime.TryParse(parts[1], out keyTimeStamp);
+                        keys.Add(new DataKey(keyID, keyTimeStamp));
+                    }
+                    
+                    return keys; 
                 }
                 else
                 {
