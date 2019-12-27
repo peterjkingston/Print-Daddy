@@ -13,12 +13,12 @@ namespace PrintDaddyService
             throw new NotImplementedException();
         }
 
-        public List<DataKey> GetKeys()
+        public List<IDataKey> GetKeys()
         {
             throw new NotImplementedException();
         }
 
-        public string[] GetRecord(DataKey key)
+        public string[] GetRecord(IDataKey key)
         {
             throw new NotImplementedException();
         }

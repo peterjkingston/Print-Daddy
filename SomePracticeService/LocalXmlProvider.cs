@@ -6,14 +6,14 @@ namespace PrintDaddyService
 {
     class LocalXmlProvider: IDataProvider
     {
-        List<DataKey> _keys;
+        List<IDataKey> _keys;
 
         /// <summary>
         /// Gets DataKeys from the local XML file.
         /// </summary>
         /// <returns>List object of DataKey</returns>
         /// <exceptions>FileNotFoundException</exceptions>"
-        public List<DataKey> GetKeys()
+        public List<IDataKey> GetKeys()
         {
             if(_keys == null)
             {
@@ -22,9 +22,9 @@ namespace PrintDaddyService
             return _keys;
         }
 
-        private List<DataKey> LoadKeys()
+        private List<IDataKey> LoadKeys()
         {
-            List<DataKey> keysList = new List<DataKey>();
+            List<IDataKey> keysList = new List<IDataKey>();
             if (File.Exists(ResourceManager.LocalKeyPath))
             {
                 using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, 
@@ -33,9 +33,9 @@ namespace PrintDaddyService
                                                         FileShare.ReadWrite))
                 {
                     XmlSerializer xs = new XmlSerializer(typeof(DataKey[]));
-                    DataKey[] keys = (DataKey[])xs.Deserialize(keyStream);
+                    IDataKey[] keys = (IDataKey[])xs.Deserialize(keyStream);
 
-                    keysList = new List<DataKey>(keys);
+                    keysList = new List<IDataKey>(keys);
 
                     keyStream.Close();
                 }

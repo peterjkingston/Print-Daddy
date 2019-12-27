@@ -6,7 +6,7 @@ namespace PrintDaddyService
 {
     class LocalPlainTextProvider : IDataProvider
     {
-        List<DataKey> _keys;
+        List<IDataKey> _keys;
 
         /// <summary>
         /// Gets keys that have already been loaded form the local plain text file. 
@@ -14,7 +14,7 @@ namespace PrintDaddyService
         /// <returns>List of keys as strings</returns>       
         /// <exception cref="DataMisalignedException">The data does not contain the specified delimiter or is not formatted properly.</exception>
         /// <exception cref="FileNotFoundException">The specified file does not exist.</exception>
-        public List<DataKey> GetKeys()
+        public List<IDataKey> GetKeys()
         {
             if(_keys == null)
             {
@@ -23,7 +23,7 @@ namespace PrintDaddyService
             return _keys;
         }
 
-        private List<DataKey> LoadKeys()
+        private List<IDataKey> LoadKeys()
         {
             if (File.Exists(ResourceManager.LocalKeyPath))
             {
@@ -31,14 +31,14 @@ namespace PrintDaddyService
 
                 if (udts[0].Contains(ResourceManager.LocalKeyDelimiter.ToString()))
                 {
-                    List<DataKey> keys = new List<DataKey>();
+                    List<IDataKey> keys = new List<IDataKey>();
                     foreach (string udt in udts)
                     {
                         string[] parts = udt.Split(ResourceManager.LocalKeyDelimiter);
                         string keyID = parts[0];
                         DateTime keyTimeStamp = default;
                         DateTime.TryParse(parts[1], out keyTimeStamp);
-                        keys.Add(new DataKey(keyID, keyTimeStamp));
+                        keys.Add(Factory.CreateDataKey(keyID, keyTimeStamp));
                     }
 
                     return keys;

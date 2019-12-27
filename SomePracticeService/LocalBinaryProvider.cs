@@ -8,9 +8,9 @@ namespace PrintDaddyService
 {
     class LocalBinaryProvider : IDataProvider
     {
-        List<DataKey> _keys;
+        List<IDataKey> _keys;
 
-        public List<DataKey> GetKeys()
+        public List<IDataKey> GetKeys()
         {
             if(_keys != null)
             {
@@ -22,9 +22,9 @@ namespace PrintDaddyService
             }
         }
 
-        private List<DataKey> LoadKeys()
+        private List<IDataKey> LoadKeys()
         {
-            List<DataKey> keysList = new List<DataKey>();
+            List<IDataKey> keysList = new List<IDataKey>();
             
             if (File.Exists(ResourceManager.LocalKeyPath))
             {
@@ -34,9 +34,9 @@ namespace PrintDaddyService
                                                         FileShare.ReadWrite))
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    DataKey[] keys = (DataKey[])bf.Deserialize(keyStream);
+                    IDataKey[] keys = (IDataKey[])bf.Deserialize(keyStream);
                     
-                    keysList = new List<DataKey>(keys);
+                    keysList = new List<IDataKey>(keys);
 
                     keyStream.Close();
                 }

@@ -4,7 +4,7 @@ namespace PrintDaddyService
 {
     internal interface IDataProvider
     {
-        List<DataKey> GetKeys();
+        List<IDataKey> GetKeys();
         bool KeysExist();
     }
 }

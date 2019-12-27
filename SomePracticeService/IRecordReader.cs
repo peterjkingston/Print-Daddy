@@ -2,6 +2,6 @@
 {
     internal interface IRecordReader
     {
-        string[] GetRecord(DataKey key);
+        string[] GetRecord(IDataKey key);
     }
 }

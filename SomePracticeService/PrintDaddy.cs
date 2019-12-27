@@ -11,8 +11,8 @@ namespace PrintDaddyService
     public class PrintDaddy
     {
         readonly Timer _timer;
-        List<DataKey> _localKeys;
-        List<DataKey> _remoteKeys;
+        List<IDataKey> _localKeys;
+        List<IDataKey> _remoteKeys;
         ICredentialsProvider _credentialsProvider;
         IDataProvider _remoteDataProvider;
         IDataProvider _localDataProvider;
@@ -47,7 +47,7 @@ namespace PrintDaddyService
             _recordReader = (IRecordReader)_remoteDataProvider; 
         }
 
-        private List<DataKey> ReadLocalKeys()
+        private List<IDataKey> ReadLocalKeys()
         {
             return _localDataProvider.GetKeys();
         }
@@ -74,7 +74,7 @@ namespace PrintDaddyService
             }
         }
 
-        private List<DataKey> ReadRemoteKeysSync()
+        private List<IDataKey> ReadRemoteKeysSync()
         {
             return _remoteDataProvider.GetKeys();
         }
@@ -82,7 +82,7 @@ namespace PrintDaddyService
         private bool NeedsToRun()
         {
             bool result = false;
-            foreach (DataKey key in _remoteKeys)
+            foreach (IDataKey key in _remoteKeys)
             {
                 if (!_localKeys.Contains(key))
                 {
