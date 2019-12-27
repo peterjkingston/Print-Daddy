@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters;
 namespace PrintDaddyService
 {
     [Serializable()]
-    struct DataKey : ISerializable
+    struct DataKey : ISerializable, IDataKey
     {
         public string ID { get; private set; }
         public DateTime TimeStamp { get; private set; }

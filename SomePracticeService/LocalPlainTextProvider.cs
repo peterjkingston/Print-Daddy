@@ -9,10 +9,11 @@ namespace PrintDaddyService
         List<DataKey> _keys;
 
         /// <summary>
-        /// Gets keys that have already been loaded form the local plain text file.
+        /// Gets keys that have already been loaded form the local plain text file. 
         /// </summary>
-        /// <returns>List of keys as strings</returns>
-        /// <exceptions>DataMisalignedException, FileNotFoundException</exceptions>
+        /// <returns>List of keys as strings</returns>       
+        /// <exception cref="DataMisalignedException">The data does not contain the specified delimiter or is not formatted properly.</exception>
+        /// <exception cref="FileNotFoundException">The specified file does not exist.</exception>
         public List<DataKey> GetKeys()
         {
             if(_keys == null)

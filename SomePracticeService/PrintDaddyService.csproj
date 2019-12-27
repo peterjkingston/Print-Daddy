@@ -52,7 +52,9 @@
     <Compile Include="DataKey.cs" />
     <Compile Include="DefaultPrintManager.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="ICredintialsProvider.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="ICredentialsProvider.cs" />
+    <Compile Include="IDataKey.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="IPrintManager.cs" />
     <Compile Include="IRecordReader.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteAPIProvider.cs" />
+    <Compile Include="RemoteAPIRecordReader.cs" />
     <Compile Include="ResourceManager.cs" />
   </ItemGroup>
   <ItemGroup>

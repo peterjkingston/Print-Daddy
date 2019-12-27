@@ -8,7 +8,7 @@ namespace PrintDaddyService
 {
     class RemoteAPIProvider:IDataProvider, IRecordReader
     {
-        public RemoteAPIProvider(ICredintialsProvider credintialsProvider)
+        public RemoteAPIProvider(ICredentialsProvider credintialsProvider)
         {
             throw new NotImplementedException();
         }

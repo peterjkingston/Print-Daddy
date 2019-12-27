@@ -27,7 +27,10 @@ namespace PrintDaddyService
             List<DataKey> keysList = new List<DataKey>();
             if (File.Exists(ResourceManager.LocalKeyPath))
             {
-                using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, FileMode.Open))
+                using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, 
+                                                        FileMode.Open, 
+                                                        FileAccess.Read, 
+                                                        FileShare.ReadWrite))
                 {
                     XmlSerializer xs = new XmlSerializer(typeof(DataKey[]));
                     DataKey[] keys = (DataKey[])xs.Deserialize(keyStream);

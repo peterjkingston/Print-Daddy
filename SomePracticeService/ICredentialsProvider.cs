@@ -1,6 +1,6 @@
 ﻿namespace PrintDaddyService
 {
-    internal interface ICredintialsProvider
+    internal interface ICredentialsProvider
     {
     }
 }

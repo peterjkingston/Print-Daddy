@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrintDaddyService
 {
-    class CryptoCredentialProvider:ICredintialsProvider
+    class CryptoCredentialProvider:ICredentialsProvider
     {
     }
 }

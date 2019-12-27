@@ -25,9 +25,13 @@ namespace PrintDaddyService
         private List<DataKey> LoadKeys()
         {
             List<DataKey> keysList = new List<DataKey>();
+            
             if (File.Exists(ResourceManager.LocalKeyPath))
             {
-                using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, FileMode.Open))
+                using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, 
+                                                        FileMode.Open, 
+                                                        FileAccess.Read,
+                                                        FileShare.ReadWrite))
                 {
                     BinaryFormatter bf = new BinaryFormatter();
                     DataKey[] keys = (DataKey[])bf.Deserialize(keyStream);
