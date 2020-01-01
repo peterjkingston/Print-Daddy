@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,7 @@
     <Compile Include="CredentialProvider\ICredentialsProvider.cs" />
     <Compile Include="DataKey\DataKey.cs" />
     <Compile Include="DataKey\IDataKey.cs" />
+    <Compile Include="DataKey\IDataKeyWriter.cs" />
     <Compile Include="DataProvider\IDataProvider.cs" />
     <Compile Include="DataProvider\IRecordReader.cs" />
     <Compile Include="DataProvider\LocalBinaryProvider.cs" />

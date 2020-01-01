@@ -7,6 +7,12 @@ namespace PrintDaddyObjectLibrary
     public class LocalXmlProvider : IDataProvider
     {
         List<IDataKey> _keys;
+        IResourceManager _resourceManager;
+
+        public LocalXmlProvider(IResourceManager resourceManager)
+        {
+            _resourceManager = resourceManager;
+        }
 
         /// <summary>
         /// Gets DataKeys from the local XML file.
@@ -25,9 +31,9 @@ namespace PrintDaddyObjectLibrary
         private List<IDataKey> LoadKeys()
         {
             List<IDataKey> keysList = new List<IDataKey>();
-            if (File.Exists(ResourceManager.LocalKeyPath))
+            if (File.Exists(_resourceManager.LocalKeyPath))
             {
-                using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, 
+                using (Stream keyStream = new FileStream(_resourceManager.LocalKeyPathBinary, 
                                                         FileMode.Open, 
                                                         FileAccess.Read, 
                                                         FileShare.ReadWrite))

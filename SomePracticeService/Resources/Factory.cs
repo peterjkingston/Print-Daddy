@@ -8,6 +8,8 @@ namespace PrintDaddyObjectLibrary
 {
     static class Factory
     {
+        static IResourceManager resourceManager = new ResourceManager();
+
         public static ICredentialsProvider CreateCredentialsProvider()
         {
             return new CryptoCredentialProvider();
@@ -15,7 +17,7 @@ namespace PrintDaddyObjectLibrary
 
         public static IDataProvider CreateLocalDataProvider()
         {
-            return new LocalBinaryProvider();
+            return new LocalBinaryProvider(resourceManager);
         }
 
         public static IDataProvider CreateRemoteDataProvider()

@@ -4,9 +4,15 @@ using System.IO;
 
 namespace PrintDaddyObjectLibrary
 {
-    public class LocalPlainTextProvider : IDataProvider
+    public class LocalPlainTextProvider : IDataProvider, IDataKeyWriter
     {
         List<IDataKey> _keys;
+        IResourceManager _resourceManager;
+
+        public LocalPlainTextProvider(IResourceManager resourceManager)
+        {
+            _resourceManager = resourceManager;
+        }
 
         /// <summary>
         /// Gets keys that have already been loaded form the local plain text file. 
@@ -25,20 +31,20 @@ namespace PrintDaddyObjectLibrary
 
         private List<IDataKey> LoadKeys()
         {
-            if (File.Exists(ResourceManager.LocalKeyPath))
+            if (File.Exists(_resourceManager.LocalKeyPath))
             {
-                string[] udts = File.ReadAllLines(ResourceManager.LocalKeyPath);
+                string[] udts = File.ReadAllLines(_resourceManager.LocalKeyPath);
 
-                if (udts[0].Contains(ResourceManager.LocalKeyDelimiter.ToString()))
+                if (udts[0].Contains(_resourceManager.LocalKeyDelimiter.ToString()))
                 {
                     List<IDataKey> keys = new List<IDataKey>();
                     foreach (string udt in udts)
                     {
-                        string[] parts = udt.Split(ResourceManager.LocalKeyDelimiter);
+                        string[] parts = udt.Split(_resourceManager.LocalKeyDelimiter);
                         string keyID = parts[0];
                         DateTime keyTimeStamp = default;
                         DateTime.TryParse(parts[1], out keyTimeStamp);
-                        keys.Add(Factory.CreateDataKey(keyID, keyTimeStamp));
+                        keys.Add(this.CreateDataKey(keyID, keyTimeStamp));
                     }
 
                     return keys;
@@ -63,6 +69,11 @@ namespace PrintDaddyObjectLibrary
             _keys = LoadKeys();
             bool result = _keys.Count > 0 ? true : false;
             return result;
+        }
+
+        public IDataKey CreateDataKey(string keyID, DateTime keyTimeStamp)
+        {
+            return new DataKey(keyID, keyTimeStamp);
         }
     }
 }

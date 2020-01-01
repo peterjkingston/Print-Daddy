@@ -9,6 +9,12 @@ namespace PrintDaddyObjectLibrary
     public class LocalBinaryProvider : IDataProvider
     {
         List<IDataKey> _keys;
+        IResourceManager _resourceManager;
+
+        public LocalBinaryProvider(IResourceManager resourceManager)
+        {
+            _resourceManager = resourceManager;
+        }
 
         public List<IDataKey> GetKeys()
         {
@@ -26,9 +32,9 @@ namespace PrintDaddyObjectLibrary
         {
             List<IDataKey> keysList = new List<IDataKey>();
             
-            if (File.Exists(ResourceManager.LocalKeyPath))
+            if (File.Exists(_resourceManager.LocalKeyPath))
             {
-                using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, 
+                using (Stream keyStream = new FileStream(_resourceManager.LocalKeyPathBinary, 
                                                         FileMode.Open, 
                                                         FileAccess.Read,
                                                         FileShare.ReadWrite))
