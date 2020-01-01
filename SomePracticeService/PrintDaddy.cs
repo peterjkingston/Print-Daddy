@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,8 +10,11 @@ using PrintDaddyObjectLibrary;
 
 namespace PrintDaddyService
 {
-    public class PrintDaddy
+    public class PrintDaddy : IPrintDaddy
     {
+        public event EventHandler Started;
+        public event EventHandler Stopped;
+
         readonly Timer _timer;
         List<IDataKey> _localKeys;
         List<IDataKey> _remoteKeys;
@@ -23,12 +27,25 @@ namespace PrintDaddyService
         /// <summary>
         /// Default constructor. Designated for use with Topshelf.HostFactory.
         /// </summary>
-        public PrintDaddy()
+        public PrintDaddy(ILocalDataProvider localDataProvider, 
+                          IRemoteDataProvider remoteDataProvider, 
+                          IPrintManager printManager,
+                          IRecordReader recordReader)
         {
             //Run the service every minute.
-            _timer = new Timer(60_000) {AutoReset = true };
+            _timer = new Timer(60_000) { AutoReset = true };
             _timer.Elapsed += Time_Elapsed;
 
+            _localDataProvider = localDataProvider;
+            _remoteDataProvider = remoteDataProvider;
+            _printManager = printManager;
+            _recordReader = recordReader;
+
+            UpdateKeys();
+        }
+
+        private void UpdateKeys()
+        {
             if (LocalKeysExist())
             {
                 //Load the local keys from the local drive if it's there...
@@ -40,12 +57,6 @@ namespace PrintDaddyService
                 //startup.
                 _localKeys = ReadRemoteKeysSync();
             }
-
-            _localDataProvider = Factory.CreateLocalDataProvider();
-            _credentialsProvider = Factory.CreateCredentialsProvider();
-            _remoteDataProvider = Factory.CreateRemoteDataProvider();
-            _printManager = Factory.CreatePrintManager();
-            _recordReader = (IRecordReader)_remoteDataProvider; 
         }
 
         private List<IDataKey> ReadLocalKeys()
@@ -64,7 +75,7 @@ namespace PrintDaddyService
             _remoteKeys = ReadRemoteKeysSync();
             if (_remoteKeys != null && this.NeedsToRun())
             {
-                foreach (DataKey key in _remoteKeys)
+                foreach (IDataKey key in _remoteKeys)
                 {
                     if (!_localKeys.Contains(key))
                     {

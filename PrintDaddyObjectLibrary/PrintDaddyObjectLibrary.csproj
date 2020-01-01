@@ -48,7 +48,9 @@
     <Compile Include="DataKey\IDataKey.cs" />
     <Compile Include="DataKey\IDataKeyWriter.cs" />
     <Compile Include="DataProvider\IDataProvider.cs" />
+    <Compile Include="DataProvider\ILocalDataProvider.cs" />
     <Compile Include="DataProvider\IRecordReader.cs" />
+    <Compile Include="DataProvider\IRemoteDataProvider.cs" />
     <Compile Include="DataProvider\LocalBinaryProvider.cs" />
     <Compile Include="DataProvider\LocalPlainTextProvider.cs" />
     <Compile Include="DataProvider\LocalXmlProvider.cs" />
