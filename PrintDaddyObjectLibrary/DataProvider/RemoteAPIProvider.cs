@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrintDaddyService
+namespace PrintDaddyObjectLibrary
 {
-    class RemoteAPIProvider:IDataProvider, IRecordReader
+    public class RemoteAPIProvider :IDataProvider, IRecordReader
     {
         public RemoteAPIProvider(ICredentialsProvider credintialsProvider)
         {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace PrintDaddyService
+namespace PrintDaddyObjectLibrary
 {
-    internal interface IDataProvider
+    public interface IDataProvider
     {
         List<IDataKey> GetKeys();
         bool KeysExist();

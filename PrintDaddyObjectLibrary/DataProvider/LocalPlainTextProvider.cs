@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace PrintDaddyService
+namespace PrintDaddyObjectLibrary
 {
-    class LocalPlainTextProvider : IDataProvider
+    public class LocalPlainTextProvider : IDataProvider
     {
         List<IDataKey> _keys;
 

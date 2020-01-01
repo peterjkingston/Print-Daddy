@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrintDaddyService
+namespace PrintDaddyObjectLibrary
 {
-    class CryptoCredentialProvider:ICredentialsProvider
+    public class CryptoCredentialProvider:ICredentialsProvider
     {
     }
 }

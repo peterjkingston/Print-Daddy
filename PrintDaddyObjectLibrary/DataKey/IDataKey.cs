@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace PrintDaddyService
+namespace PrintDaddyObjectLibrary
 {
-    interface IDataKey
+    public interface IDataKey
     {
         string ID { get; }
         DateTime TimeStamp { get; }

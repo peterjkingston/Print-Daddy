@@ -1,6 +1,6 @@
-﻿namespace PrintDaddyService
+﻿namespace PrintDaddyObjectLibrary
 {
-    internal class RemoteAPIRecordReader : IRecordReader
+    public class RemoteAPIRecordReader : IRecordReader
     {
         public string[] GetRecord(IDataKey key)
         {

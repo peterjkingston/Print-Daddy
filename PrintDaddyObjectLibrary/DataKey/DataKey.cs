@@ -2,10 +2,10 @@
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters;
 
-namespace PrintDaddyService
+namespace PrintDaddyObjectLibrary
 {
     [Serializable()]
-    struct DataKey : ISerializable, IDataKey
+    public struct DataKey : ISerializable, IDataKey
     {
         public string ID { get; private set; }
         public DateTime TimeStamp { get; private set; }

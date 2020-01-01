@@ -1,40 +1,41 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 
-namespace PrintDaddyService
+namespace PrintDaddyObjectLibrary
 {
-    class LocalXmlProvider: IDataProvider
+    public class LocalBinaryProvider : IDataProvider
     {
         List<IDataKey> _keys;
 
-        /// <summary>
-        /// Gets DataKeys from the local XML file.
-        /// </summary>
-        /// <returns>List object of DataKey</returns>
-        /// <exceptions>FileNotFoundException</exceptions>"
         public List<IDataKey> GetKeys()
         {
-            if(_keys == null)
+            if(_keys != null)
             {
-                _keys = LoadKeys();
+                return _keys;
             }
-            return _keys;
+            else
+            {
+                return LoadKeys();
+            }
         }
 
         private List<IDataKey> LoadKeys()
         {
             List<IDataKey> keysList = new List<IDataKey>();
+            
             if (File.Exists(ResourceManager.LocalKeyPath))
             {
                 using (Stream keyStream = new FileStream(ResourceManager.LocalKeyPathBinary, 
                                                         FileMode.Open, 
-                                                        FileAccess.Read, 
+                                                        FileAccess.Read,
                                                         FileShare.ReadWrite))
                 {
-                    XmlSerializer xs = new XmlSerializer(typeof(DataKey[]));
-                    IDataKey[] keys = (IDataKey[])xs.Deserialize(keyStream);
-
+                    BinaryFormatter bf = new BinaryFormatter();
+                    IDataKey[] keys = (IDataKey[])bf.Deserialize(keyStream);
+                    
                     keysList = new List<IDataKey>(keys);
 
                     keyStream.Close();
@@ -43,10 +44,6 @@ namespace PrintDaddyService
             return keysList;
         }
 
-        /// <summary>
-        /// Determines if there are valid DataKeys in the local XML file.
-        /// </summary>
-        /// <returns>Returns true if DataKeys exist in the local XML file.</returns>
         public bool KeysExist()
         {
             _keys = LoadKeys();
