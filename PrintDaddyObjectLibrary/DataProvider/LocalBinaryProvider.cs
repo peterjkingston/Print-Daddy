@@ -18,14 +18,13 @@ namespace PrintDaddyObjectLibrary
 
         public List<IDataKey> GetKeys()
         {
-            if(_keys != null)
+            if(/*_keys == null*/ true) //Always load local keys
             {
-                return _keys;
+                _keys = LoadKeys();    
             }
-            else
-            {
-                return LoadKeys();
-            }
+
+            return _keys;
+           
         }
 
         private List<IDataKey> LoadKeys()

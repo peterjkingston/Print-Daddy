@@ -21,7 +21,7 @@ namespace PrintDaddyObjectLibrary
         /// <exceptions>FileNotFoundException</exceptions>"
         public List<IDataKey> GetKeys()
         {
-            if(_keys == null)
+            if (/*_keys == null*/ true) //Always load local keys
             {
                 _keys = LoadKeys();
             }

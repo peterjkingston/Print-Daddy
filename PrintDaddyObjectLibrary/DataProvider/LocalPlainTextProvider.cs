@@ -23,7 +23,7 @@ namespace PrintDaddyObjectLibrary
         /// <exception cref="FileNotFoundException">The specified file does not exist.</exception>
         public List<IDataKey> GetKeys()
         {
-            if(_keys == null)
+            if(/*_keys == null*/ true) //Always load local data keys
             {
                 _keys = LoadKeys();
             }
