@@ -35,7 +35,8 @@ namespace PrintDaddyService
         {
             if (_validator.NeedsToRun())
             {
-                while(_selector.Next())
+                _selector.Reload();
+                while (_selector.Next())
                 {
                     _recordAction.Run(_selector.GetCurrentItem());
                 }

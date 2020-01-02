@@ -5,5 +5,6 @@
         bool Next();
         object GetCurrentItem();
         void Reset();
+        void Reload();
     }
 }

@@ -7,7 +7,7 @@ namespace PrintDaddyObjectLibrary
         IDataKeyValidator _validator;
         ILocalDataProvider _localDataProvider;
         IRemoteDataProvider _remoteDataProvider;
-        List<IDataKey> dataKeys;
+        List<IDataKey> _dataKeys;
         int cursor = -1;
 
         public DataKeySelector(IDataKeyValidator validator,
@@ -21,20 +21,34 @@ namespace PrintDaddyObjectLibrary
 
         public object GetCurrentItem()
         {
-            return dataKeys[cursor];
+            return _dataKeys[cursor];
         }
 
         public bool Next()
         {
             bool result = false;
             
-            if(cursor < dataKeys.Count)
+            if(cursor < _dataKeys.Count)
             {
                 cursor++;
-                result = cursor < dataKeys.Count;
+                result = cursor < _dataKeys.Count;
             }
 
             return result;
+        }
+
+        public void Reload()
+        {
+            _dataKeys = new List<IDataKey>();
+
+            List<IDataKey> localKeys = _localDataProvider.GetKeys();
+            foreach (IDataKey remoteDataKey in _remoteDataProvider.GetKeys())
+            {
+                if (!localKeys.Contains(remoteDataKey))
+                {
+                    _dataKeys.Add(remoteDataKey);
+                }
+            }
         }
 
         public void Reset()
