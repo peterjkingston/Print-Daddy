@@ -1,6 +1,6 @@
 ﻿namespace PrintDaddyObjectLibrary
 {
-    interface IDataKeyValidator : IValidator
+    public interface IDataKeyValidator : IValidator
     {
         bool IsValidKey(IDataKey dataKey);
     }

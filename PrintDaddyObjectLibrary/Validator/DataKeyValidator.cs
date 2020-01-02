@@ -2,7 +2,7 @@
 
 namespace PrintDaddyObjectLibrary
 {
-    class DataKeyValidator : IDataKeyValidator
+    public class DataKeyValidator : IDataKeyValidator
     {
         ILocalDataProvider _localDataProvdier;
         IRemoteDataProvider _remoteDataProvider;

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PrintDaddyObjectLibrary
 {
-    class DataKeySelector : ISelector
+    public class DataKeySelector : ISelector
     {
         IDataKeyValidator _validator;
         ILocalDataProvider _localDataProvider;

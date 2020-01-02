@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PrintDaddyObjectLibrary
+﻿namespace PrintDaddyObjectLibrary
 {
-    class PrintAction : IRecordAction
+    public class PrintAction : IRecordAction
     {
         IPrintManager _printManager;
         IRecordReader _recordReader;
