@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace PrintDaddyObjectLibrary
 {
-    public class LocalBinaryProvider : IDataProvider
+    public class LocalBinaryProvider : ILocalDataProvider
     {
         List<IDataKey> _keys;
         IResourceManager _resourceManager;

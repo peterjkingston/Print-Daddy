@@ -4,7 +4,7 @@ using System.IO;
 
 namespace PrintDaddyObjectLibrary
 {
-    public class LocalPlainTextProvider : IDataProvider, IDataKeyWriter
+    public class LocalPlainTextProvider : ILocalDataProvider, IDataKeyWriter
     {
         List<IDataKey> _keys;
         IResourceManager _resourceManager;
@@ -12,6 +12,7 @@ namespace PrintDaddyObjectLibrary
         public LocalPlainTextProvider(IResourceManager resourceManager)
         {
             _resourceManager = resourceManager;
+            _keys = GetKeys();
         }
 
         /// <summary>

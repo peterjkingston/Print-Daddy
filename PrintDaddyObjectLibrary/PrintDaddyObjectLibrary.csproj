@@ -56,12 +56,19 @@
     <Compile Include="DataProvider\LocalXmlProvider.cs" />
     <Compile Include="DataProvider\RemoteAPIProvider.cs" />
     <Compile Include="DataProvider\RemoteAPIRecordReader.cs" />
+    <Compile Include="RecordAction\IRecordAction.cs" />
+    <Compile Include="RecordAction\PrintAction.cs" />
     <Compile Include="RecordField.cs" />
     <Compile Include="PrintManager\DefaultPrintManager.cs" />
     <Compile Include="PrintManager\IPrintManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceManager\IResourceManager.cs" />
     <Compile Include="ResourceManager\ResourceManager.cs" />
+    <Compile Include="Selector\DataKeySelector.cs" />
+    <Compile Include="Selector\ISelector.cs" />
+    <Compile Include="Validator\DataKeyValidator.cs" />
+    <Compile Include="Validator\IDataKeyValidator.cs" />
+    <Compile Include="Validator\IValidator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

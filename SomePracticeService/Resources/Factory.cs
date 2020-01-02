@@ -15,12 +15,12 @@ namespace PrintDaddyObjectLibrary
             return new CryptoCredentialProvider();
         }
 
-        public static IDataProvider CreateLocalDataProvider()
+        public static ILocalDataProvider CreateLocalDataProvider()
         {
             return new LocalBinaryProvider(resourceManager);
         }
 
-        public static IDataProvider CreateRemoteDataProvider()
+        public static IRemoteDataProvider CreateRemoteDataProvider()
         {
             return new RemoteAPIProvider(CreateCredentialsProvider());
         }

@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace PrintDaddyObjectLibrary
 {
-    public class LocalXmlProvider : IDataProvider
+    public class LocalXmlProvider : ILocalDataProvider
     {
         List<IDataKey> _keys;
         IResourceManager _resourceManager;

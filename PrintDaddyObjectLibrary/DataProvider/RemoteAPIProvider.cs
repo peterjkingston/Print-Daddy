@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PrintDaddyObjectLibrary
 {
-    public class RemoteAPIProvider :IDataProvider, IRecordReader
+    public class RemoteAPIProvider :IRemoteDataProvider, IRecordReader
     {
+        List<IDataKey> _keys;
+
         public RemoteAPIProvider(ICredentialsProvider credintialsProvider)
         {
             throw new NotImplementedException();
@@ -24,6 +26,16 @@ namespace PrintDaddyObjectLibrary
         }
 
         public bool KeysExist()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReadKeysSync()
+        {
+            _keys = DownloadKeys();
+        }
+
+        private List<IDataKey> DownloadKeys()
         {
             throw new NotImplementedException();
         }

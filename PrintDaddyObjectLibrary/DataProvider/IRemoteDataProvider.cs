@@ -8,5 +8,6 @@ namespace PrintDaddyObjectLibrary
 {
     public interface IRemoteDataProvider : IDataProvider
     {
+        void ReadKeysSync();
     }
 }
