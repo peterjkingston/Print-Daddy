@@ -41,10 +41,9 @@ namespace PrintDaddyObjectLibrary
         {
             _dataKeys = new List<IDataKey>();
 
-            List<IDataKey> localKeys = _localDataProvider.GetKeys();
             foreach (IDataKey remoteDataKey in _remoteDataProvider.GetKeys())
             {
-                if (!localKeys.Contains(remoteDataKey))
+                if (_validator.IsValidKey(remoteDataKey))
                 {
                     _dataKeys.Add(remoteDataKey);
                 }
