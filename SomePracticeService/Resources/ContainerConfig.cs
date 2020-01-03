@@ -12,6 +12,7 @@ namespace PrintDaddyService
             //Register types here, in order of program flow;
             builder.RegisterType<Application>().As<IApplication>();
             builder.RegisterType<PrintDaddy>().As<IPrintDaddy>();
+            builder.RegisterType<ResourceManager>().As<IResourceManager>();
 
             //CredentialProvider
             builder.RegisterType<CryptoCredentialProvider>().As<ICredentialsProvider>();

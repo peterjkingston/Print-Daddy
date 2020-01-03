@@ -6,5 +6,6 @@
         string LocalKeyPath { get; }
         string LocalKeyPathBinary { get; }
         string LocalKeyPathXml { get; }
+        object LocalSampleTemplatePath { get; }
     }
 }
