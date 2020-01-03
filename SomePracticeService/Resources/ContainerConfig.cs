@@ -33,7 +33,7 @@ namespace PrintDaddyService
 
             //RecordAction -> PrintManager
             builder.RegisterType<PrintAction>().As<IRecordAction>();
-            builder.RegisterType<DefaultPrintManager>().As<IPrintManager>();
+            builder.RegisterType<MSWordPrintManager>().As<IPrintManager>();
 
             return builder.Build();
         }
