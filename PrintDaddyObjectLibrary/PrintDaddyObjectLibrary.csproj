@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CredentialProvider\CryptoCredentialProvider.cs" />
+    <Compile Include="CredentialProvider\ICredentialCollector.cs" />
     <Compile Include="CredentialProvider\ICredentialsProvider.cs" />
+    <Compile Include="CredentialProvider\ICryptoReader.cs" />
     <Compile Include="DataKey\DataKey.cs" />
     <Compile Include="DataKey\IDataKey.cs" />
     <Compile Include="DataKey\IDataKeyWriter.cs" />

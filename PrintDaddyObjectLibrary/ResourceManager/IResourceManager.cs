@@ -10,5 +10,6 @@ namespace PrintDaddyObjectLibrary
         string LocalKeyPathXml { get; }
         object LocalSampleTemplatePath { get; }
         IEnumerable<string> TemplatePaths { get; }
+        string CredentialPath { get; }
     }
 }
