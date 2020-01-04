@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CredentialProvider\AesCryptoReader.cs" />
     <Compile Include="CredentialProvider\CryptoCredentialProvider.cs" />
     <Compile Include="CredentialProvider\ICredentialCollector.cs" />
     <Compile Include="CredentialProvider\ICredentialsProvider.cs" />
