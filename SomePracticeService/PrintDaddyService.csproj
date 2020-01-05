@@ -56,7 +56,6 @@
     <Compile Include="IPrintDaddy.cs" />
     <Compile Include="Resources\Application.cs" />
     <Compile Include="Resources\ContainerConfig.cs" />
-    <Compile Include="Resources\Factory.cs" />
     <Compile Include="PrintDaddy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

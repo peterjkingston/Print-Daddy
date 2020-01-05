@@ -31,7 +31,7 @@ namespace PrintDaddyObjectLibrary
         {
             List<IDataKey> keysList = new List<IDataKey>();
             
-            if (File.Exists(_resourceManager.LocalKeyPath))
+            if (File.Exists(_resourceManager.LogoPath))
             {
                 using (Stream keyStream = new FileStream(_resourceManager.LocalKeyPathBinary, 
                                                         FileMode.Open, 

@@ -32,9 +32,9 @@ namespace PrintDaddyObjectLibrary
 
         private List<IDataKey> LoadKeys()
         {
-            if (File.Exists(_resourceManager.LocalKeyPath))
+            if (File.Exists(_resourceManager.LogoPath))
             {
-                string[] udts = File.ReadAllLines(_resourceManager.LocalKeyPath);
+                string[] udts = File.ReadAllLines(_resourceManager.LogoPath);
 
                 if (udts[0].Contains(_resourceManager.LocalKeyDelimiter.ToString()))
                 {

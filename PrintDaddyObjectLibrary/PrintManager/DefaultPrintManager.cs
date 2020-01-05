@@ -16,5 +16,10 @@ namespace PrintDaddyObjectLibrary
             PrintDocument printDocument = new PrintDocument();
             //TODO
         }
+
+        public void Print(Dictionary<string, string> dictionary)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

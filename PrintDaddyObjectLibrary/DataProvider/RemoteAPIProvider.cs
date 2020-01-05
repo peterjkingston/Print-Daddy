@@ -39,5 +39,10 @@ namespace PrintDaddyObjectLibrary
         {
             throw new NotImplementedException();
         }
+
+        Dictionary<string, string> IRecordReader.GetRecord(IDataKey key)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
