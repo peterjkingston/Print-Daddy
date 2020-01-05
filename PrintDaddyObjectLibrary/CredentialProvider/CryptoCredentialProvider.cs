@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PrintDaddyObjectLibrary
 {
@@ -25,7 +20,7 @@ namespace PrintDaddyObjectLibrary
 
         public ICredentials GetCredentials()
         {
-            ICredentials credential;
+            ISerializableCredentials credential;
 
             if (File.Exists(_resourceManager.CredentialPath))
             {
@@ -39,9 +34,9 @@ namespace PrintDaddyObjectLibrary
             return credential;
         }
 
-        private ICredentials CredentialsFromStream(Stream credentialStream)
+        private ISerializableCredentials CredentialsFromStream(Stream credentialStream)
         {
-            return _cryptoReader.StreamRead<ICredentials>(credentialStream);
+            return _cryptoReader.StreamRead<ISerializableCredentials>(credentialStream);
         }
     }
 }

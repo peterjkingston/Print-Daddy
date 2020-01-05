@@ -4,6 +4,6 @@ namespace PrintDaddyObjectLibrary
 {
     public interface ICredentialCollector
     {
-        ICredentials RequestCredentials();
+        ISerializableCredentials RequestCredentials();
     }
 }

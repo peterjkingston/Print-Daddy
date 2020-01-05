@@ -17,6 +17,7 @@ namespace PrintDaddyService
             //CredentialProvider
             builder.RegisterType<CryptoCredentialProvider>().As<ICredentialsProvider>();
             builder.RegisterType<AesCryptoReader>().As<ICryptoReader>();
+            builder.RegisterType<SerializableNetworkCredential>().As<ISerializableCredentials>();
             
             //DataKeys and DataProviders
             builder.RegisterType<DataKey>().As<IDataKey>();
