@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace PrintDaddyTests
 {
     [TestClass()]
-    public class LocalXmlProvderTests
+    public class LocalXmlProviderTests
     {
         [TestMethod()]
         public void KeysExist_ReturnsTrue_WhenKeysExist()
@@ -15,7 +15,7 @@ namespace PrintDaddyTests
 
             //Act
             bool actual = new LocalXmlProvider(new TestResourceManagerWithDataKeys()).KeysExist();
-             
+
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -42,6 +42,23 @@ namespace PrintDaddyTests
 
             //Act
             bool actual = new LocalXmlProvider(new DeadEndResourceManager()).KeysExist();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void GetKeys_GetsValidKeys()
+        {
+            //Arrange
+            bool expected = true;
+
+            //Act
+            IDataKey key = new LocalXmlProvider(new TestResourceManagerWithDataKeys()).GetKeys()[0];
+
+            bool key_hasID = key.ID.Length > 0;
+            bool key_hasTimeStamp = key.TimeStamp != System.DateTime.MinValue;
+            bool actual = key_hasID && key_hasTimeStamp;
 
             //Assert
             Assert.AreEqual(expected, actual);

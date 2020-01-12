@@ -20,7 +20,7 @@ namespace PrintDaddyTests
             //Act
             XmlDataWriter dataWriter = new XmlDataWriter(new TestResourceManagerWithDataKeys());
             List<IDataKey> keys = new List<IDataKey>();
-            keys.Add(new DataKey($"ID-{Environment.UserName}", DateTime.Now));
+            keys.Add(new DataKey($"ID-{Environment.UserName}", new DateTime(2020, 01, 01, 0, 0, 0)));
             keys.Add(new DataKey($"ID-{Environment.UserName}",DateTime.UtcNow));
             dataWriter.WriteKeys<DataKey>(keys);
 
