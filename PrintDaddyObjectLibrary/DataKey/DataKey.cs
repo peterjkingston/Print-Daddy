@@ -7,8 +7,8 @@ namespace PrintDaddyObjectLibrary
     [Serializable()]
     public struct DataKey : ISerializable, IDataKey
     {
-        public string ID { get; private set; }
-        public DateTime TimeStamp { get; private set; }
+        public string ID { get; set; }
+        public DateTime TimeStamp { get; set; }
 
         public DataKey(string id, DateTime timestamp)
         {

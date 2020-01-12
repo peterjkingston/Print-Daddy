@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace PrintDaddyObjectLibrary
 {
-    public interface IDataKey
+    public interface IDataKey : ISerializable
     {
         string ID { get; }
         DateTime TimeStamp { get; }

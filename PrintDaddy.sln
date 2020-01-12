@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintDaddyService", "SomePr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintDaddyObjectLibrary", "PrintDaddyObjectLibrary\PrintDaddyObjectLibrary.csproj", "{5102B6A2-BAAC-45C7-BDFA-207A9D131C7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintDaddyTests", "PrintDaddyTests\PrintDaddyTests.csproj", "{C4E41294-6F4B-4180-9F36-FD2EFFE6F04B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5102B6A2-BAAC-45C7-BDFA-207A9D131C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5102B6A2-BAAC-45C7-BDFA-207A9D131C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5102B6A2-BAAC-45C7-BDFA-207A9D131C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E41294-6F4B-4180-9F36-FD2EFFE6F04B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E41294-6F4B-4180-9F36-FD2EFFE6F04B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E41294-6F4B-4180-9F36-FD2EFFE6F04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E41294-6F4B-4180-9F36-FD2EFFE6F04B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

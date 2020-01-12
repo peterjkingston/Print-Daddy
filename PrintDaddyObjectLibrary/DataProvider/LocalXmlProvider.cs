@@ -31,17 +31,22 @@ namespace PrintDaddyObjectLibrary
         private List<IDataKey> LoadKeys()
         {
             List<IDataKey> keysList = new List<IDataKey>();
-            if (File.Exists(_resourceManager.LogoPath))
+            if (File.Exists(_resourceManager.LocalKeyPathXml))
             {
-                using (Stream keyStream = new FileStream(_resourceManager.LocalKeyPathBinary, 
+                using (Stream keyStream = new FileStream(_resourceManager.LocalKeyPathXml, 
                                                         FileMode.Open, 
                                                         FileAccess.Read, 
                                                         FileShare.ReadWrite))
                 {
                     XmlSerializer xs = new XmlSerializer(typeof(DataKey[]));
-                    IDataKey[] keys = (IDataKey[])xs.Deserialize(keyStream);
 
-                    keysList = new List<IDataKey>(keys);
+                    DataKey[] keys = (DataKey[])xs.Deserialize(keyStream);
+
+                    keysList = new List<IDataKey>();
+                    foreach (DataKey key in keys)
+                    {
+                        keysList.Add(key);
+                    }
 
                     keyStream.Close();
                 }

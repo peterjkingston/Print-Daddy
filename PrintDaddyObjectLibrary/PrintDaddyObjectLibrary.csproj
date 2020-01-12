@@ -62,6 +62,8 @@
     <Compile Include="DataProvider\LocalXmlProvider.cs" />
     <Compile Include="DataProvider\RemoteAPIProvider.cs" />
     <Compile Include="DataProvider\RemoteAPIRecordReader.cs" />
+    <Compile Include="DataWriter\IDataWriter.cs" />
+    <Compile Include="DataWriter\XmlDataWriter.cs" />
     <Compile Include="PrintManager\MSWordPrintManager.cs" />
     <Compile Include="RecordAction\IRecordAction.cs" />
     <Compile Include="RecordAction\PrintAction.cs" />
